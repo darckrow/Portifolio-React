@@ -16,7 +16,7 @@
     transition-duration: 0.5s;
 }
 
-.card div {
+.card section {
     background: rgba(1, 9, 28, 0.75);
     padding: 20px;
     border-radius: 20px;

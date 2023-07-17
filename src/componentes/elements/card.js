@@ -1,19 +1,37 @@
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import styles from './card.module.css'
 import ButtonB from './buttonB'
+import {useState} from 'react'
 
 function card({img, title, tech, description, repo, site}){
+
+   const [Info, setInfo] = useState(false)
+
+    function InfoOn(){
+        setInfo(true)
+    }
+    function InfoOff(){
+        setInfo(false)
+    }
+
     return(
-        <div className={styles.card}>
-            <a href={site}>
-            <img src={img} />
+        <div onMouseLeave={InfoOff} className={styles.card}>
+
+            <a onMouseEnter={InfoOn} href={site} >
+            <img src={img} alt='ERRO'/>
             </a>
-            <div>
-                <h3>{title}</h3>
-                <p><strong>Tecnologias: </strong>{tech}</p>
-                <p>{description}</p>
-                <ButtonB text='Acesse o repositorio' Link={repo}/>
-            </div>
+
+            {Info === true && (
+                    
+                <section>
+                    <h3>{title}</h3>
+                    <p><strong>Tecnologias: </strong>{tech}</p>
+                    <p>{description}</p>
+                    <ButtonB text='Acesse o repositorio' Link={repo}/>
+                </section>
+
+            )}
         </div>
     )
 }
